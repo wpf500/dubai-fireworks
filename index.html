@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="container">
+        <img class="content content-photo" />
+        <img class="content content-photo" />
+        <main class="content">
+            <div class="content-box" id="js-content">
+                <div class="top">
+                    <div class="top-money" id="js-money">000,000,000</div>
+                    <div class="top-clock">
+                        <img class="top-clock-inner" src="images/clock.svg" />
+                        <span class="top-clock-inner" id="js-clock">00:00</span>
+                    </div>
+                </div>
+                <div class="progress">
+                    <span class="progress-fg" id="js-progress"></span>
+                </div>
+                <button id="js-start">Start</button>
+            </div>
+        </main>
+    </div>
+    <script src="scripts/clock.js"></script>
+    <script src="scripts/money.js"></script>
+    <script>
+        // settings
+        var timeTotal = 6 * 60 * 1000;
+        var moneyTotal = 150000000;
+        var speed = 10;
+
+        var clock = new Clock(timeTotal / 1000, speed);
+        var money = new Money(timeTotal / speed, moneyTotal);
+
+        document.getElementById('js-start').onclick = function () {
+            document.getElementById('js-content').className += ' is-mini';
+
+            // some initial delay
+            setTimeout(function () {
+                clock.start();
+                money.start();
+            }, 1000);
+        };
+
+
+        var photoCurrent = 0;
+        var photoElements = document.getElementsByClassName('content-photo');
+        var photos = {10: 'images/dubai1.jpg', 5: 'images/dubai2.jpg'};
+
+        function switchPhoto(src) {
+            photoElements[photoCurrent].src = src;
+            photoElements[1].style.opacity = photoCurrent;
+            photoCurrent = 1 - photoCurrent;
+        }
+
+        switchPhoto('images/dubai1.jpg');
+    </script>
+</body>
+</html>

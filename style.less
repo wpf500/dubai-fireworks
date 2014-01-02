@@ -1,0 +1,96 @@
+@width: 500px;
+@height: 600px;
+@fg: #111;
+
+@content-top: 400px;
+@content-bg: rgba(255, 255, 255, 0.8);
+
+@progress-fg: #247de1;
+
+html {
+    font-family: arial;
+    color: @fg;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    position: relative;
+    margin: 0 auto;
+    max-width: @width;
+    height: @height;
+}
+
+.content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.content-photo {
+    transition: opacity 0.5s;
+}
+
+.content-box {
+    background-color: @content-bg;
+    border-top: @content-top solid transparent;
+    border-bottom: (@height - @content-top) solid transparent;
+    padding: 20px;
+    transition: margin-top 0.5s, border-width 0.5s;
+
+    &.is-mini {
+        border-width: 0;
+        margin-top: @content-top;
+    }
+}
+
+.top {
+    display: table;
+    width: 80%;
+    margin: 0 auto 5px;
+}
+
+.top-money,
+.top-clock {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    width: 50%;
+}
+
+.top-money {
+    line-height: 24px;
+
+    &:before {
+        content: "$";
+        color: @progress-fg;
+        padding-right: 4px;
+        font-size: 24px;
+        font-weight: bold;
+        vertical-align: middle;
+    }
+}
+
+.top-clock-inner {
+    vertical-align: middle;
+    padding-right: 2px;
+}
+
+.progress {
+    position: relative;
+    margin: 0 auto;
+    width: 80%;
+    border: 3px solid @fg;
+    height: 30px;
+}
+
+.progress-fg {
+    position: absolute;
+    background-color: @progress-fg;
+    background-image: repeating-linear-gradient(135deg, transparent, transparent 25px, rgba(255,255,255,.2) 25px, rgba(255,255,255,.2) 50px);
+    height: 100%;
+}
