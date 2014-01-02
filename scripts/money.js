@@ -32,6 +32,7 @@ var Money = function (timeTotal, moneyTotal) {
     }
 
     this.start = function () {
+        moneyCurrent = 0;
         interval = setInterval(tick, timeStep);
     };
 
