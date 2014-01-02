@@ -5,7 +5,7 @@
 @fg: #111;
 @fg-secondary: #247de1;
 
-@content-top: 400px;
+@go-top: 400px;
 
 html {
     font-family: arial;
@@ -15,6 +15,13 @@ html {
 body {
     margin: 0;
     padding: 0;
+}
+
+h1 {
+    font-family: georgia;
+    font-size: 24px;
+    color: @fg-secondary;
+    margin: 0;
 }
 
 .button {
@@ -44,55 +51,56 @@ body {
     margin: 0 auto;
     max-width: @width;
     height: @height;
-    overflow: hidden;
 }
 
 .content {
     position: absolute;
     width: 100%;
+    max-width: @width;
     height: 100%;
-    overflow: hidden;
 }
 
-.content-photo {
+.photo {
     transition: opacity 1s;
 }
 
-.content-loading {
-    background-color: @bg;
-    padding: 20px;
-}
-
-.content-loading-title {
-    font-family: georgia;
-    font-size: 24px;
-    color: @fg-secondary;
-    margin: 0;
-}
-
 .content-main {
-    margin-top: @content-top;
-    padding: 20px;
-    background-color: @bg;
-    opacity: 0;
-    transition: opacity 0.5s;
+    clip: rect(0, @width, (@height / 2), 0);
+    transition: clip 1s;
+
+    &.is-loaded {
+        clip: rect(@go-top, @width, @height, 0);
+    }
 }
 
-.top {
+.content-loading,
+.content-go {
+    position: absolute;
+    left: 0;
+    right: 0;
+    background-color: @bg;
+    padding: 20px;
+}
+
+.content-go {
+    top: @go-top;
+}
+
+.counter {
     display: table;
     width: 80%;
     margin: 0 auto 5px;
 }
 
-.top-money,
-.top-clock {
+.counter-money,
+.counter-clock {
     display: table-cell;
     vertical-align: middle;
     text-align: center;
     width: 50%;
 }
 
-.top-money {
+.counter-money {
     line-height: 24px;
 
     &:before {
@@ -105,7 +113,7 @@ body {
     }
 }
 
-.top-clock-inner {
+.counter-clock-inner {
     vertical-align: middle;
     padding-right: 2px;
 }

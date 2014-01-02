@@ -1,7 +1,7 @@
 var Photo = function (timeTotal) {
     var timeout;
 
-    var photoFrames = document.getElementsByClassName('content-photo');
+    var photoFrames = document.getElementsByClassName('photo');
     var topFrame = true;
 
     var photos = [
