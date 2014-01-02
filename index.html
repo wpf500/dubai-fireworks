@@ -6,7 +6,7 @@
 </head>
 <body>
     <div class="container">
-        <img class="content content-photo" />
+        <img class="content content-photo" src="images/dubai1.jpg" />
         <img class="content content-photo" />
         <main class="content">
             <div class="content-box" id="js-content">
@@ -26,6 +26,7 @@
     </div>
     <script src="scripts/clock.js"></script>
     <script src="scripts/money.js"></script>
+    <script src="scripts/photo.js"></script>
     <script>
         // settings
         var timeTotal = 6 * 60 * 1000;
@@ -34,29 +35,17 @@
 
         var clock = new Clock(timeTotal / 1000, speed);
         var money = new Money(timeTotal / speed, moneyTotal);
+        var photo = new Photo(timeTotal / speed);
 
         document.getElementById('js-start').onclick = function () {
             document.getElementById('js-content').className += ' is-mini';
-
             // some initial delay
             setTimeout(function () {
                 clock.start();
                 money.start();
+                photo.start();
             }, 1000);
         };
-
-
-        var photoCurrent = 0;
-        var photoElements = document.getElementsByClassName('content-photo');
-        var photos = {10: 'images/dubai1.jpg', 5: 'images/dubai2.jpg'};
-
-        function switchPhoto(src) {
-            photoElements[photoCurrent].src = src;
-            photoElements[1].style.opacity = photoCurrent;
-            photoCurrent = 1 - photoCurrent;
-        }
-
-        switchPhoto('images/dubai1.jpg');
     </script>
 </body>
 </html>
