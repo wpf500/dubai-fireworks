@@ -1,11 +1,11 @@
 @width: 500px;
 @height: 600px;
+
+@bg: rgba(255, 255, 255, 0.8);
 @fg: #111;
+@fg-secondary: #247de1;
 
 @content-top: 400px;
-@content-bg: rgba(255, 255, 255, 0.8);
-
-@progress-fg: #247de1;
 
 html {
     font-family: arial;
@@ -17,11 +17,34 @@ body {
     padding: 0;
 }
 
+.button {
+    border-radius: 5px;
+    background-color: @fg-secondary;
+    border: 5px solid transparent;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+
+    &:before {
+        padding-right: 10px;
+    }
+}
+
+.button-start {
+    display: block;
+    margin: 0 0 0 auto;
+
+    &:before {
+        content: "\25b6";
+    }
+}
+
 .container {
     position: relative;
     margin: 0 auto;
     max-width: @width;
     height: @height;
+    overflow: hidden;
 }
 
 .content {
@@ -35,17 +58,24 @@ body {
     transition: opacity 1s;
 }
 
-.content-box {
-    background-color: @content-bg;
-    border-top: @content-top solid transparent;
-    border-bottom: (@height - @content-top) solid transparent;
+.content-loading {
+    background-color: @bg;
     padding: 20px;
-    transition: margin-top 0.5s, border-width 0.5s;
+}
 
-    &.is-mini {
-        border-width: 0;
-        margin-top: @content-top;
-    }
+.content-loading-title {
+    font-family: georgia;
+    font-size: 24px;
+    color: @fg-secondary;
+    margin: 0;
+}
+
+.content-main {
+    margin-top: @content-top;
+    padding: 20px;
+    background-color: @bg;
+    opacity: 0;
+    transition: opacity 0.5s;
 }
 
 .top {
@@ -67,8 +97,8 @@ body {
 
     &:before {
         content: "$";
-        color: @progress-fg;
-        padding-right: 4px;
+        color: @fg-secondary;
+        padding-right: 3px;
         font-size: 24px;
         font-weight: bold;
         vertical-align: middle;
@@ -90,7 +120,7 @@ body {
 
 .progress-fg {
     position: absolute;
-    background-color: @progress-fg;
+    background-color: @fg-secondary;
     background-image: repeating-linear-gradient(135deg, transparent, transparent 25px, rgba(255,255,255,.2) 25px, rgba(255,255,255,.2) 50px);
     height: 100%;
 }
