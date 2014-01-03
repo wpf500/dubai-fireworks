@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div class="container">
+    <div class="container" id="js-container">
         <img class="content photo" src="images/dubai1.jpg" />
         <img class="content photo" />
-        <main class="content content-main" id="js-content">
-            <section class="content-loading">
+        <section class="content content-loading">
+            <div class="content-box">
                 <h1>Dubai's Fireworks</h1>
                 <p>
                     Dubai spent an estimated $150,000,000 on their New Year
@@ -19,9 +19,29 @@
                     that money?
                 </p>
                 <button class="button button-start" id="js-start">Start</button>
-            </section>
-            <section class="content-go">
-                <div class="items"></div>
+            </div>
+        </section>
+        <main class="content content-main">
+            <div class="content-box items">
+                <ul class="">
+                    <li class="item">
+                        <div class="item-col item-icon"><img src="" /></div>
+                        <div class="item-col item-name"></div>
+                        <div class="item-col item-count"></div>
+                    </li>
+                    <li class="item">
+                        <div class="item-col item-icon"><img src="" /></div>
+                        <div class="item-col item-name"></div>
+                        <div class="item-col item-count"></div>
+                    </li>
+                    <li class="item">
+                        <div class="item-col item-icon"><img src="" /></div>
+                        <div class="item-col item-name"></div>
+                        <div class="item-col item-count"></div>
+                    </li>
+                </ul>
+            </div>
+            <div class="content-box">
                 <div class="counter">
                     <div class="counter-money" id="js-money">000,000,000</div>
                     <div class="counter-clock">
@@ -32,9 +52,16 @@
                 <div class="progress">
                     <span class="progress-fg" id="js-progress"></span>
                 </div>
-            </section>
+            </div>
         </main>
     </div>
+    <script type="text/template" id="js-item">
+        <li class="item">
+            <div class="item-col item-icon"><img src="" /></div>
+            <div class="item-col item-name"></div>
+            <div class="item-col item-count"></div>
+        </li>
+    </script>
     <script src="scripts/clock.js"></script>
     <script src="scripts/money.js"></script>
     <script src="scripts/photo.js"></script>
@@ -49,7 +76,7 @@
         var photo = new Photo(timeTotal / speed);
 
         document.getElementById('js-start').onclick = function () {
-            document.getElementById('js-content').className += ' is-loaded';
+            document.getElementById('js-container').className += ' is-loaded';
             // some initial delay
             setTimeout(function () {
                 clock.start();

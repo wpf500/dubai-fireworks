@@ -51,39 +51,39 @@ h1 {
     margin: 0 auto;
     max-width: @width;
     height: @height;
+    overflow: hidden;
 }
 
 .content {
     position: absolute;
     width: 100%;
     max-width: @width;
-    height: 100%;
 }
 
 .photo {
     transition: opacity 1s;
+    height: 100%;
 }
 
-.content-main {
-    clip: rect(0, @width, (@height / 2), 0);
-    transition: clip 1s;
-
-    &.is-loaded {
-        clip: rect(@go-top, @width, @height, 0);
-    }
-}
-
-.content-loading,
-.content-go {
-    position: absolute;
-    left: 0;
-    right: 0;
+.content-box {
     background-color: @bg;
     padding: 20px;
 }
 
-.content-go {
-    top: @go-top;
+.content-loading {
+    clip: rect(0, @width, @height, 0);
+    transition: clip 1s;
+    .is-loaded & {
+        clip: rect(@height, @width, @height, 0);
+    }
+}
+
+.content-main {
+    bottom: -@height;
+    transition: bottom 1s cubic-bezier(0.9, 0.5, 0.5, 1.5);
+    .is-loaded & {
+        bottom: 100px;
+    }
 }
 
 .counter {
@@ -131,4 +131,9 @@ h1 {
     background-color: @fg-secondary;
     background-image: repeating-linear-gradient(135deg, transparent, transparent 25px, rgba(255,255,255,.2) 25px, rgba(255,255,255,.2) 50px);
     height: 100%;
+}
+
+.items {
+    width: 80%;
+    margin: 0 auto 10px;
 }
