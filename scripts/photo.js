@@ -1,4 +1,6 @@
 var Photo = function (timeTotal) {
+    'use strict';
+
     var timeout;
 
     var photoFrames = document.getElementsByClassName('photo');

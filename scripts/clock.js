@@ -1,4 +1,6 @@
 var Clock = function (timeTotal, speed) {
+    'use strict';
+
     var that = this;
     var clockElement = document.getElementById('js-clock');
     var interval;

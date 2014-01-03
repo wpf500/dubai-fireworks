@@ -1,4 +1,6 @@
 var Money = function (timeTotal, moneyTotal) {
+    'use strict';
+
     var that = this;
     var interval;
 
