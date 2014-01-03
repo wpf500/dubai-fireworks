@@ -50,24 +50,26 @@
     <script src="scripts/money.js"></script>
     <script src="scripts/photo.js"></script>
     <script>
-        // settings
-        var timeTotal = 6 * 60 * 1000;
-        var moneyTotal = 150000000;
-        var speed = 10;
+        (function () {
+            // settings
+            var timeTotal = 6 * 60 * 1000;
+            var moneyTotal = 150000000;
+            var speed = 10;
 
-        var clock = new Clock(timeTotal / 1000, speed);
-        var money = new Money(timeTotal / speed, moneyTotal);
-        var photo = new Photo(timeTotal / speed);
+            var clock = new Clock(timeTotal / 1000, speed);
+            var money = new Money(timeTotal / speed, moneyTotal);
+            var photo = new Photo(timeTotal / speed);
 
-        document.getElementById('js-start').onclick = function () {
-            document.getElementById('js-container').className += ' is-loaded';
-            // some initial delay
-            setTimeout(function () {
-                clock.start();
-                money.start();
-                photo.start();
-            }, 1000);
-        };
+            document.getElementById('js-start').onclick = function () {
+                document.getElementById('js-container').className += ' is-loaded';
+                // some initial delay
+                setTimeout(function () {
+                    clock.start();
+                    money.start();
+                    photo.start();
+                }, 1000);
+            };
+        })();
     </script>
 </body>
 </html>
