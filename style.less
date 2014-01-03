@@ -133,7 +133,38 @@ h1 {
     height: 100%;
 }
 
-.items {
+.content-items {
     width: 80%;
+    height: 300px;
     margin: 0 auto 10px;
+    overflow: hidden;
+}
+
+.items {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.items-in() {
+    from { margin-top: 400px; }
+    to { margin-top: 0px; }
+}
+
+@keyframes item-in { .items-in; }
+@-webkit-keyframes item-in { .items-in; }
+
+.item {
+    display: table;
+    width: 100%;
+
+    &:last-child {
+        animation: item-in 0.5s;
+        -webkit-animation: item-in 0.5s;
+    }
+}
+
+.item-col {
+    display: table-cell;
+    width: 20%;
 }
