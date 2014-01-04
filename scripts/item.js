@@ -20,8 +20,8 @@ var Item = function (money) {
     function tick() {
         items.forEach(function (item) {
             item.count = Math.floor(money.moneyCurrent / item.cost);
-            list.update();
         });
+        list.update();
     }
 
     this.start = function () {
