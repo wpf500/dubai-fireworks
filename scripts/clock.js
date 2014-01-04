@@ -4,7 +4,7 @@ var Clock = function (timeTotal, speed) {
     var that = this;
     var clockElement = document.getElementById('js-clock');
     var interval;
-    var time = 0;
+    var time;
 
     function pad(val) {
         if (val <= 9) {

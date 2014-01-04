@@ -16,7 +16,7 @@ var Photo = function (timeTotal) {
     var timings = [0, 20, 20, 20, 20].map(function (time) {
         return timeTotal * time / 100;
     });
-    var current = 0;
+    var current;
 
     function tick() {
         photoFrames[topFrame ? 0 : 1].src = 'images/' + photos[current];
