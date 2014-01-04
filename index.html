@@ -39,16 +39,22 @@
             </div>
         </main>
     </div>
-    <script type="text/template" id="js-item">
-        <li class="item">
-            <div class="item-col item-icon"><img src="" /></div>
-            <div class="item-col item-name"></div>
-            <div class="item-col item-count"></div>
-        </li>
+    <script type="text/ractive" id="js-item">
+        {{#items}}
+            {{#count}}
+            <li class="item">
+                <span class="item-col item-icon"><img src="images/icons/{{icon}}.svg" /></span>
+                <span class="item-col">{{name}}</span>
+                <span class="item-col item-count">{{count}}</span>
+            </li>
+            {{/count}}
+        {{/items}}
     </script>
     <script src="scripts/clock.js"></script>
     <script src="scripts/money.js"></script>
     <script src="scripts/photo.js"></script>
+    <script src="scripts/Ractive.min.js"></script>
+    <script src="scripts/item.js"></script>
     <script>
         (function () {
             'use strict';
@@ -61,6 +67,7 @@
             var clock = new Clock(timeTotal / 1000, speed);
             var money = new Money(timeTotal / speed, moneyTotal);
             var photo = new Photo(timeTotal / speed);
+            var item = new Item(money);
 
             document.getElementById('js-start').onclick = function () {
                 document.getElementById('js-container').className += ' is-loaded';
@@ -69,6 +76,7 @@
                     clock.start();
                     money.start();
                     photo.start();
+                    item.start();
                 }, 1000);
             };
         })();

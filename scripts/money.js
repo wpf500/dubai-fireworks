@@ -7,8 +7,6 @@ var Money = function (timeTotal, moneyTotal) {
     var timeStep = 200;
     var moneyStep = Math.round(timeStep / timeTotal * moneyTotal);
 
-    var moneyCurrent = 0;
-
     var moneyElement = document.getElementById('js-money');
     var progressElement = document.getElementById('js-progress');
 
@@ -24,17 +22,17 @@ var Money = function (timeTotal, moneyTotal) {
     })();
 
     function tick() {
-        moneyCurrent = Math.min(moneyCurrent + moneyStep, moneyTotal);
-        moneyElement.textContent = pad(moneyCurrent);
-        progressElement.style.width = (moneyCurrent / moneyTotal * 100) + '%';
+        that.moneyCurrent = Math.min(that.moneyCurrent + moneyStep, moneyTotal);
+        moneyElement.textContent = pad(that.moneyCurrent);
+        progressElement.style.width = (that.moneyCurrent / moneyTotal * 100) + '%';
 
-        if (moneyCurrent >= moneyTotal) {
+        if (that.moneyCurrent >= moneyTotal) {
             that.stop();
         }
     }
 
     this.start = function () {
-        moneyCurrent = 0;
+        that.moneyCurrent = 0;
         interval = setInterval(tick, timeStep);
     };
 

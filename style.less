@@ -157,6 +157,7 @@ h1 {
 .item {
     display: table;
     width: 100%;
+    margin-bottom: 5px;
 
     &:last-child {
         animation: item-in 0.5s;
@@ -166,5 +167,24 @@ h1 {
 
 .item-col {
     display: table-cell;
-    width: 20%;
+    vertical-align: middle;
 }
+
+.item-icon {
+    width: 24px;
+    padding-right: 6px;
+}
+
+.item-icon > img {
+    width: 24px;
+    height: 24px;
+}
+
+.item-count {
+    width: 0px;
+    text-align: right;
+    &:before {
+        content: "x";
+    }
+}
+
