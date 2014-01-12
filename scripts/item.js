@@ -4,12 +4,15 @@ var Item = function (money) {
     var interval;
 
     var items = [
-        {'name': 'Buy a water handpump', 'icon': 'water', 'cost': 50},
+        {'name': 'Buy a handpump for water', 'icon': 'water', 'cost': 50},
         {'name': 'Repay a student\'s debt', 'icon': 'student', 'cost': 59100},
         {'name': 'Buy a house in Hammersmith', 'icon': 'house', 'cost': 753952},
         {'name': 'Buy a Bugati Veyron 16.4', 'icon': 'car', 'cost': 1300000},
+        {'name': 'Build a secondary school', 'icon': 'house', 'cost': 35000000},
         {'name': 'Film The Prestige', 'icon': 'film', 'cost': 40000000},
+        {'name': 'Go to Mars', 'icon': 'car', 'cost': 73000000},
         {'name': 'Buy Cardiff City FC', 'icon': 'football', 'cost': 120000000},
+        {'name': 'A firework show', 'icon': 'film', 'cost': 150000000}
     ];
     var list = new Ractive({
         'el': 'js-items',
